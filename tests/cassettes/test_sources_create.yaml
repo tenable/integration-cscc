@@ -1,0 +1,32 @@
+interactions:
+- request:
+    body: '{"displayName": "example source"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['33']
+      Content-Type: [application/json]
+      User-Agent: [pyTenable/0.3.14 (pyTenable/0.3.14; Python/3.6.7)]
+      authorization: [Bearer ya29.c.ElrZBkKWBfFbA-ffrhZLe-tb-ZcySrYCq2s_-kPM5aupAY-FbikoXNZ9YjrQbf6Jrvjz-aF0moNHegQhzMb7NP8RJewDXMeZIp_w013UHznVK4Xp9NNnoh8lDRs]
+    method: POST
+    uri: https://securitycenter.googleapis.com/v1beta1/organizations/981834921564/sources
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAC/6vmUlBQykvMTVWyUlDKL0pPzMusSizJzM8r1re0MLQwNrE0MjQ1M9Evzi8tSk4t
+        1gfyTY0NDY2MDA3NDM3MDE0slXRARqRkFhfkJFb6QU1KrUjMLchJVYBoU+Kq5QIAzta5D2kAAAA=
+    headers:
+      Alt-Svc: ['quic=":443"; ma=2592000; v="46,44,43,39"']
+      Cache-Control: [private]
+      Content-Encoding: [gzip]
+      Content-Type: [application/json; charset=UTF-8]
+      Date: ['Thu, 28 Mar 2019 17:36:32 GMT']
+      Server: [ESF]
+      Transfer-Encoding: [chunked]
+      Vary: [Origin, X-Origin, Referer]
+      X-Content-Type-Options: [nosniff]
+      X-Frame-Options: [SAMEORIGIN]
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1

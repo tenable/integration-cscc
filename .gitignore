@@ -1,0 +1,8 @@
+*.pyc
+*.json
+.DS_Store
+.python-version
+tio_api.sh
+/.coverage
+/tenable_cscc.egg-info
+/dist

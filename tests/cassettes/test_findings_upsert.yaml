@@ -1,0 +1,44 @@
+interactions:
+- request:
+    body: '{"category": "example", "createTime": "2019-03-05T23:26:05.569Z", "eventTime":
+      "2019-03-05T23:26:05.569Z", "externalUri": "https://cloud.tenable.com/app.html#/dashboards/workbenchassets/None/vulnerabilities/44657",
+      "name": "organizations/981834921564/sources/2456454250925202170/findings/bbdeb8235812830d977a74391ed59e70",
+      "parent": "organizations/981834921564/sources/2456454250925202170", "resourceName":
+      "/compute.googleapis.com/projects/example-233118/zones/us-central1-c/instances/1644712871559487695",
+      "sourceProperties": {"cpes": "", "cves": "", "cvss_base_score": 10.0, "cvss_temporal_score":
+      "N/A"}, "state": "ACTIVE"}'
+    headers:
+      Accept: ['*/*']
+      Accept-Encoding: ['gzip, deflate']
+      Connection: [keep-alive]
+      Content-Length: ['627']
+      Content-Type: [application/json]
+      User-Agent: [pyTenable/0.3.14 (pyTenable/0.3.14; Python/3.6.7)]
+      authorization: [Bearer ya29.c.ElrZBkKWBfFbA-ffrhZLe-tb-ZcySrYCq2s_-kPM5aupAY-FbikoXNZ9YjrQbf6Jrvjz-aF0moNHegQhzMb7NP8RJewDXMeZIp_w013UHznVK4Xp9NNnoh8lDRs]
+    method: PATCH
+    uri: https://securitycenter.googleapis.com/v1beta1/organizations/981834921564/sources/11366567746046043010/findings/bbdeb8235812830d977a74391ed59e70
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAC/72ST2/cIBDF7/spVu61NmAM2L5FVQ89ZNXDNodcIoynXhobEODNP+W7B9urKM21
+        UiUuM++J9xuGl91+nxk5QdbuM+sHafSzjNqagJqa1LRqSsJ4hYKdvYKACKGcMy5ExfFyKCYY/dam
+        12YIqOt66OqSspqUNcV9I4QUFW0I9KwBgbOvS5yTHkz8h8DtGg+b53ChR8pObo5QDNYOI0inQ5Fa
+        yHn7B1QMCB7l5EbIS0oJqdGzNen+OeQq0Xg5klwhbUKUZs3lVSXSFIIw1lS14A3bYpMhrnlX344/
+        br5vTZV6g/VPS/8SswnwGMEbOf7yetFOMbrQIqRGO/dFBCO7EVZK6VxxitP4BfUynDorfR/Qg/X3
+        HRh1kiFAmuCQkNF5Hg142elRR51Iq4ozcWFbH+Sntw78oqXIl9RfAN1aZatvqc+f6xDuOhngLijr
+        l/kI/ihFmJxNj/QuZwd0lSXD6xYMavY6Pl1Lf/8h9b99LPQ3wDsXnNNuj3qjKDFpckxzzI4lbUve
+        YlYw3txeVughLfGzt6yPRLSUt7QsGGO32e519wbfqNlMNAMAAA==
+    headers:
+      Alt-Svc: ['quic=":443"; ma=2592000; v="46,44,43,39"']
+      Cache-Control: [private]
+      Content-Encoding: [gzip]
+      Content-Type: [application/json; charset=UTF-8]
+      Date: ['Thu, 28 Mar 2019 17:36:32 GMT']
+      Server: [ESF]
+      Transfer-Encoding: [chunked]
+      Vary: [Origin, X-Origin, Referer]
+      X-Content-Type-Options: [nosniff]
+      X-Frame-Options: [SAMEORIGIN]
+      X-XSS-Protection: [1; mode=block]
+    status: {code: 200, message: OK}
+version: 1
