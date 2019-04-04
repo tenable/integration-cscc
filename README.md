@@ -34,8 +34,8 @@ pip install tenable-cscc
 2. Copy the source id that was generated (we will use this later)
 3. [Create a service key][create_key] for the account that was created
 4. Create a new VM Instance to store the integration (Debian 9)
-5. Download the installation script: `curl -o installer.sh https://raw.githubusercontent.com/tenable/integrations-cscc/master/install-tenable-cscc.sh`
-6. Run the installer `sudo installer.sh`
+5. Download the installation script: `curl -o installer.sh https://raw.githubusercontent.com/tenable/integration-cscc/master/install-tenable-cscc.sh`
+6. Run the installer `chmod 755 installer.sh && sudo ./installer.sh`
 7. Copy the service key onto the host (such as /etc/google-account.json).
 8. Update the variables within the /etc/conf.d/tenable-cscc file.
 9. Start the service `systemctl start tenable-cscc`
