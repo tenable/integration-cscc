@@ -7,15 +7,16 @@ apt -y install python3 python3-pip git
 pip3 install tenable-cscc
 
 # Construct the service file
-cat /etc/systemd/system << EOF
+touch /lib/systemd/system/tenable-cscc.service
+cat <<'EOF' >> /lib/systemd/system/tenable-cscc.service
 [Unit]
 Description=Tenable.io to CSCC Bridge
 After=network.target
 
 [Service]
 Type=simple
-EnvironmentFile=/etc/conf.d/tenable-cscc
-ExecStart=tenable-cscc
+EnvironmentFile=/etc/tenable-cscc.conf
+ExecStart=/usr/local/bin/tenable-cscc
 Restart=on-failure
 
 [Install]
@@ -23,10 +24,13 @@ WantedBy=multi-user.target
 EOF
 
 # Construct the environment file
-cat /etc/conf.d/tenable-cscc << EOF
+touch /etc/tenable-cscc.conf
+cat <<'EOF' >> /etc/tenable-cscc.conf 
 # The Tenable.io API Access and Secret Keys
-TIO_ACCESS_KEY="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
-TIO_SECRET_KEY="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+# TIO_ACCESS_KEY="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+# TIO_SECRET_KEY="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
+TIO_ACCESS_KEY=""
+TIO_SECRET_KEY=""
 
 # The Google Cloud Service Account file location.  This file should be the JSON 
 # document that informs the integration how to communicate to Google Cloud
@@ -34,7 +38,8 @@ TIO_SECRET_KEY="0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
 CSCC_ACCOUNT_FILE="/etc/google-account.json"
 
 # The Source ID that was generated from enabling the Tenable.io Security Source
-CSCC_SOURCE_ID="organizations/{ORGID}/sources/{SOURCEID}"
+# CSCC_SOURCE_ID="organizations/{ORGID}/sources/{SOURCEID}"
+CSCC_SOURCE_ID=""
 
 # How often should the bridge ingest data from Tenable.io.  This value is
 # is specified in hours.
