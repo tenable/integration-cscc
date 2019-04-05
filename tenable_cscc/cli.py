@@ -26,6 +26,7 @@ import click, logging, time
 from tenable.io import TenableIO
 from .cscc import SecurityCommandCenter
 from .transform import GoogleSCCIngest
+from . import __version__
 
 @click.command()
 @click.option('--tio-access-key', 
@@ -62,7 +63,8 @@ def cli(tio_access_key, tio_secret_key, batch_size, verbose, observed_since,
     
     # Initiate the Tenable.io API model, the Ingester model, and start the
     # ingestion and data transformation.
-    tio = TenableIO(tio_access_key, tio_secret_key)
+    tio = TenableIO(tio_access_key, tio_secret_key, 
+        ua_identity='Tio2CSCC/{}'.format(__version__))
     gcp = SecurityCommandCenter(service_account_file, source_id)
     ingest = GoogleSCCIngest(tio, gcp)
     ingest.ingest(observed_since, batch_size, threads)
