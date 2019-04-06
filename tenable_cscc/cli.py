@@ -43,7 +43,7 @@ from . import __version__
     type=click.INT, help='How many hours between recurring imports')
 @click.option('--threads', '-t', envvar='THREADS', default=2,
     type=click.INT, help='How many concurrent threads to run for the import.')
-@click.option('--service-account-file', '-s', envvar='CSCC_ACCOUNT_FILE',
+@click.option('--service-account-file', '-S', envvar='CSCC_ACCOUNT_FILE',
     type=click.Path(exists=True),
     help='The JSON file for the service account.')
 @click.option('--source-id', '-i', envvar='CSCC_SOURCE_ID',

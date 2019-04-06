@@ -9,7 +9,7 @@ https://github.com/tenable/integrations-cscc
 
 setup(
     name='tenable-cscc',
-    version='1.0.1',
+    version='1.0.2',
     description='',
     author='Tenable, Inc.',
     long_description=long_description,
