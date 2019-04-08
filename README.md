@@ -1,4 +1,4 @@
-# Tenable.io -> Google Security Command Center
+# Tenable.io -> Google Cloud Security Command Center
 
 This tool is designed to consume Tenable.io asset and vulnerability data,
 transform that data into the Google Security Command Center format, and then 
