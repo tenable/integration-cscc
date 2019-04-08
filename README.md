@@ -1,16 +1,10 @@
 # Tenable.io -> Google Cloud Security Command Center
 
-This tool is designed to consume Tenable.io asset and vulnerability data,
+This tool is designed to consume Tenable.io vulnerability data,
 transform that data into the Google Security Command Center format, and then 
 upload the resulting data into Google Security Command Center.
 
-The tool can be run as either a one-shot docker container or as a command-line
-tool.  To run as a docker image, you'll need to build the image and then pass
-the necessary secrets on to the container.
-
-To run as a command-line tool, you'd need to install the required python modules
-and then can run the tool using either environment variables or by passing the
-required parameters as run-time parameters.
+The tool can be run as either as a one-shot ingest or as a continuous service.
 
 ### Requirements for use
 
