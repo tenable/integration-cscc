@@ -1,7 +1,7 @@
 # Tenable.io -> Google Cloud Security Command Center
 
 This tool is designed to consume Tenable.io vulnerability data,
-transform that data into the Google Security Command Center format, and then 
+transform that data into the Google Security Command Center format, and then
 upload the resulting data into Google Security Command Center.
 
 The tool can be run as either as a one-shot ingest or as a continuous service.
@@ -11,7 +11,7 @@ The tool can be run as either as a one-shot ingest or as a continuous service.
 * API Keys for a service account in Tenable.io that can use the Exports API
   (Generally an Admin User)
 * Service Account within Google Cloud that has the required permissions to
-  edit findings and state (_Security Center Findings Editor_, and 
+  edit findings and state (_Security Center Findings Editor_, and
   _Security Center Findings State Setter_ roles).
 * A host to run the script on that can run a Python 3.x environment.  As this
   bridge talks cloud-to-cloud, where it is located does not matter.
@@ -31,11 +31,11 @@ pip install tenable-cscc
 5. Download the installation script: `curl -o installer.sh https://raw.githubusercontent.com/tenable/integration-cscc/master/install-tenable-cscc.sh`
 6. Run the installer `chmod 755 installer.sh && sudo ./installer.sh`
 7. Copy the service key onto the host (such as /etc/google-account.json).
-8. Update the variables within the /etc/conf.d/tenable-cscc file.
-9. Start the service `systemctl start tenable-cscc`
+8. Update the variables within the /etc/tenable-cscc.conf file.
+9. Start the service `sudo systemctl start tenable-cscc`
 
 ### Options
-The following below details both the command-line arguments as well as the 
+The following below details both the command-line arguments as well as the
 equivalent environment variables.
 
 ```
