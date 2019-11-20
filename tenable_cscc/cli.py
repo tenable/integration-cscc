@@ -29,9 +29,9 @@ from .transform import GoogleSCCIngest
 from . import __version__
 
 @click.command()
-@click.option('--tio-access-key', 
+@click.option('--tio-access-key',
     envvar='TIO_ACCESS_KEY', help='Tenable.io Access Key')
-@click.option('--tio-secret-key', 
+@click.option('--tio-secret-key',
     envvar='TIO_SECRET_KEY', help='Tenable.io Secret Key')
 @click.option('--batch-size', '-b', envvar='BATCH_SIZE', default=100,
     type=click.INT, help='Export/Import Batch Sizing')
@@ -60,11 +60,13 @@ def cli(tio_access_key, tio_secret_key, batch_size, verbose, observed_since,
         logging.basicConfig(level=logging.INFO)
     if verbose > 1:
         logging.basicConfig(level=logging.DEBUG)
-    
+
     # Initiate the Tenable.io API model, the Ingester model, and start the
     # ingestion and data transformation.
-    tio = TenableIO(tio_access_key, tio_secret_key, 
-        ua_identity='Tio2CSCC/{}'.format(__version__))
+    tio = TenableIO(tio_access_key, tio_secret_key,
+        vendor='Tenable',
+        product='Google CSCC',
+        build=__version__)
     gcp = SecurityCommandCenter(service_account_file, source_id)
     ingest = GoogleSCCIngest(tio, gcp)
     ingest.ingest(observed_since, batch_size, threads)

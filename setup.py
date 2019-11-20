@@ -9,7 +9,7 @@ https://github.com/tenable/integrations-cscc
 
 setup(
     name='tenable-cscc',
-    version='1.0.2',
+    version='1.1.0',
     description='',
     author='Tenable, Inc.',
     long_description=long_description,
@@ -34,6 +34,7 @@ setup(
         'pytenable>=0.3.15',
         'arrow>=0.13.0',
         'google-auth>=1.6.3',
+        'restfly>=1.1.1',
         'Click>=7.0'
     ],
     entry_points={

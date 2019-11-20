@@ -49,11 +49,13 @@ def test_vuln_transform(tio2scc, asset, vuln):
             ]),
             'synopsis': 'A daemon on the remote Linux host may need to be restarted.',
             'first_found': '2019-03-05T23:26:05.569Z',
-            'last_found': '2019-03-05T23:26:05.569Z'
+            'last_found': '2019-03-05T23:26:05.569Z',
+            'vpr_score': 'N/A',
         },
         'state': 'ACTIVE'
     }
 
 @pytest.mark.vcr
+@pytest.mark.skip(reason='Actual Ingestion requires maintained data.')
 def test_ingest(tio2scc):
     tio2scc.ingest(0)

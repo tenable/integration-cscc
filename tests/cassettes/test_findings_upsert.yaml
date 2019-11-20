@@ -1,5 +1,59 @@
 interactions:
 - request:
+    body: assertion=eyJ0eXAiOiAiSldUIiwgImFsZyI6ICJSUzI1NiIsICJraWQiOiAiMjNhOGU4NGFlMzRjNTIxMDg3NDkzNDRkZWVhMmRhMGZiOTRkZjdhOCJ9.eyJpYXQiOiAxNTc0MjgzNTU4LCAiZXhwIjogMTU3NDI4NzE1OCwgImlzcyI6ICJ0aW8taW1wb3J0QGV4YW1wbGUtMjMzMTE4LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwgImF1ZCI6ICJodHRwczovL29hdXRoMi5nb29nbGVhcGlzLmNvbS90b2tlbiIsICJzY29wZSI6ICJodHRwczovL3d3dy5nb29nbGVhcGlzLmNvbS9hdXRoL2Nsb3VkLXBsYXRmb3JtIn0.j0FVVVZHQCVwYnub4JItgB9cOdtqictqsEfpe4xuHtC835eBG--MFcmM_P_EQHYF50OBSBlKvI6QpCoFR5PEtW7CSHpjIhZJaost892gDJESl0wXSd5Yy28hFItfHKd7SQLPrDJ_q98-ayJSx1fgC7i0rAa8nH22pIyrJ8bSQdrZGG7hgcvZahf9x6wMBRpb8f87KsU9KQILvOHqzjfl8o8DdeHtuWX3VlRSkcdZ1ltmzJw8IsonunDuNF0u6624FB_Yq9Nu_nsSw5TDrrp5stBILsMpUyAHbEDZ5SB5uX2uNX36PFUeZFnJyGQDUr5iqtcNRutuWFeWF1WQ3ZLFVw&grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '798'
+      User-Agent:
+      - python-requests/2.22.0
+      content-type:
+      - application/x-www-form-urlencoded
+    method: POST
+    uri: https://oauth2.googleapis.com/token
+  response:
+    body:
+      string: !!binary |
+        H4sIAAAAAAAC/x3Ouw6CMBQA0N2vIJ3FgBB8bDTGV1EhoKILaetVgfImKcT47wbXM53PSFEQ5Rya
+        JmqLFHK0VFBPp4sJnxBhdVh/rU1CBfAuzIiersSJQSC9tyCy9ILtg939Ilv0pLr58lyF7OTkMdsc
+        oLZcU8UrI2W7fZif02iLW90Vs8SU2LMNsttf38dKbo5zeni6PJCQXZJAnV4c07aTl1Q1jsZDDroy
+        rqGJ4qFmWJr21/81avsShjAGWkONRt8fK1ca7s8AAAA=
+    headers:
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Cache-Control:
+      - private
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=utf-8
+      Date:
+      - Wed, 20 Nov 2019 20:59:19 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - X-Origin
+      - Referer
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
+- request:
     body: '{"category": "example", "createTime": "2019-03-05T23:26:05.569Z", "eventTime":
       "2019-03-05T23:26:05.569Z", "externalUri": "https://cloud.tenable.com/app.html#/dashboards/workbenchassets/None/vulnerabilities/44657",
       "name": "organizations/981834921564/sources/2456454250925202170/findings/bbdeb8235812830d977a74391ed59e70",
@@ -8,37 +62,62 @@ interactions:
       "sourceProperties": {"cpes": "", "cves": "", "cvss_base_score": 10.0, "cvss_temporal_score":
       "N/A"}, "state": "ACTIVE"}'
     headers:
-      Accept: ['*/*']
-      Accept-Encoding: ['gzip, deflate']
-      Connection: [keep-alive]
-      Content-Length: ['627']
-      Content-Type: [application/json]
-      User-Agent: [pyTenable/0.3.14 (pyTenable/0.3.14; Python/3.6.7)]
-      authorization: [Bearer ya29.c.ElrZBkKWBfFbA-ffrhZLe-tb-ZcySrYCq2s_-kPM5aupAY-FbikoXNZ9YjrQbf6Jrvjz-aF0moNHegQhzMb7NP8RJewDXMeZIp_w013UHznVK4Xp9NNnoh8lDRs]
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '627'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - Integration/1.0 (Tenable; Google CSCC; Build/1.0.3) Restfly/1.1.1 (Restfly/1.1.1;
+        Python/3.7.3; Darwin/x86_64)
+      authorization:
+      - Bearer ya29.c.Kl6xB1gF4KalecxXmK1kDlObeTwQhlKwpQTHdbZSom9yKqYSwUqXbOLnibGMer6P4-BD3kbIJXnUk_HBt1Pl7j4wBQA3KIJWhNqwGN8aMfPcTwemVjT-2VL4AAjgw-0c
     method: PATCH
-    uri: https://securitycenter.googleapis.com/v1beta1/organizations/981834921564/sources/11366567746046043010/findings/bbdeb8235812830d977a74391ed59e70
+    uri: https://securitycenter.googleapis.com/v1/organizations/981834921564/sources/2456454250925202170/findings/bbdeb8235812830d977a74391ed59e70?updateMask=state%2CeventTime%2CsourceProperties.cvss_temporal_score%2CsourceProperties.has_patch%2CsourceProperties.output%2CsourceProperties.vpr_score
   response:
     body:
       string: !!binary |
-        H4sIAAAAAAAC/72ST2/cIBDF7/spVu61NmAM2L5FVQ89ZNXDNodcIoynXhobEODNP+W7B9urKM21
-        UiUuM++J9xuGl91+nxk5QdbuM+sHafSzjNqagJqa1LRqSsJ4hYKdvYKACKGcMy5ExfFyKCYY/dam
-        12YIqOt66OqSspqUNcV9I4QUFW0I9KwBgbOvS5yTHkz8h8DtGg+b53ChR8pObo5QDNYOI0inQ5Fa
-        yHn7B1QMCB7l5EbIS0oJqdGzNen+OeQq0Xg5klwhbUKUZs3lVSXSFIIw1lS14A3bYpMhrnlX344/
-        br5vTZV6g/VPS/8SswnwGMEbOf7yetFOMbrQIqRGO/dFBCO7EVZK6VxxitP4BfUynDorfR/Qg/X3
-        HRh1kiFAmuCQkNF5Hg142elRR51Iq4ozcWFbH+Sntw78oqXIl9RfAN1aZatvqc+f6xDuOhngLijr
-        l/kI/ihFmJxNj/QuZwd0lSXD6xYMavY6Pl1Lf/8h9b99LPQ3wDsXnNNuj3qjKDFpckxzzI4lbUve
-        YlYw3txeVughLfGzt6yPRLSUt7QsGGO32e519wbfqNlMNAMAAA==
+        H4sIAAAAAAAC/72Su27cMBBF+/2KhdJG4kOkKKozghQpskixSeHGoKiJlrFEEiS18QP+91CrheG4
+        TJFy7lzw3Jnh826/L6yaoej2hQujsuZJJeNsRLIlbc0kJbxhKLolaIiIslxxRjmWlFNMicDop7GD
+        sWNEfT9A39Kat4S2NR6kEEqwWhIYuASBi48rzasANv07b3slwGY5XLMj7Wa/JKhG58YJlDexyhLy
+        wf0CnSKCBzX7CUpa14S06MnZ/PwSS53DBDWRUiNjY1J2xZKGMZGHEIRzyVrRSL5hsyFdeDefjl9+
+        fN5EnbXRhcdVv2K2BjwkCFZN34NZe6eUfOwQ0pNbhiqBVf0El5TK++qU5ukDGlQ89U6FIaLfLtz3
+        YPVJxQh5gkOOjM7LZCGo3kwmmZyUsYaLa7bLQr4F5yGsvYx8zvoa8Hypiotvrf27+hzjXa8i3EXt
+        wjofwW9bCWbv8pJe28UB3RTZ8LKBQS/BpMevKty/of6vb4X+5r/GgnM+7dFsISgmssR1ifmR1h1t
+        Oswr3sjb6wUD5Bu+9xJyJKIjuGNtxSm9LXYvuz/i+++uMQMAAA==
     headers:
-      Alt-Svc: ['quic=":443"; ma=2592000; v="46,44,43,39"']
-      Cache-Control: [private]
-      Content-Encoding: [gzip]
-      Content-Type: [application/json; charset=UTF-8]
-      Date: ['Thu, 28 Mar 2019 17:36:32 GMT']
-      Server: [ESF]
-      Transfer-Encoding: [chunked]
-      Vary: [Origin, X-Origin, Referer]
-      X-Content-Type-Options: [nosniff]
-      X-Frame-Options: [SAMEORIGIN]
-      X-XSS-Protection: [1; mode=block]
-    status: {code: 200, message: OK}
+      Alt-Svc:
+      - quic=":443"; ma=2592000; v="46,43",h3-Q050=":443"; ma=2592000,h3-Q049=":443";
+        ma=2592000,h3-Q048=":443"; ma=2592000,h3-Q046=":443"; ma=2592000,h3-Q043=":443";
+        ma=2592000
+      Cache-Control:
+      - private
+      Content-Encoding:
+      - gzip
+      Content-Type:
+      - application/json; charset=UTF-8
+      Date:
+      - Wed, 20 Nov 2019 20:59:20 GMT
+      Server:
+      - ESF
+      Transfer-Encoding:
+      - chunked
+      Vary:
+      - Origin
+      - X-Origin
+      - Referer
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-XSS-Protection:
+      - '0'
+    status:
+      code: 200
+      message: OK
 version: 1

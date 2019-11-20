@@ -1,5 +1,4 @@
 import pytest
-from gcp_scc.scc import SecurityCommandCenterIterator
 
 @pytest.fixture
 def scc_finding():
@@ -21,17 +20,5 @@ def scc_finding():
     }
 
 @pytest.mark.vcr
-def test_sources_list(scc):
-    for source in scc.sources.list():
-        assert 'displayName' in source
-        assert 'name' in source
-
-@pytest.mark.vcr
-def test_sources_create(scc):
-    source = scc.sources.create({'displayName': 'example source'})
-    assert 'displayName' in source
-    assert 'name' in source
-
-@pytest.mark.vcr
 def test_findings_upsert(scc, scc_finding):
-    finding = scc.findings.upsert('bbdeb8235812830d977a74391ed59e70', scc_finding)
+    finding = scc.findings.upsert(scc_finding)

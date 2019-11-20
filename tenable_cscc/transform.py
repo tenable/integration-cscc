@@ -1,12 +1,13 @@
-from .cscc import SecurityCommandCenter, AlreadyExistsError
+from .cscc import SecurityCommandCenter
 from .pool import ThreadPool
+from restfly.errors import RequestConflictError
 import logging, arrow, hashlib, time
 
 
 def md5sum(*values):
     '''
     Creates an md5sum of a given list of strings, and returns the md5sum.
-    
+
     Args:
         *values (str): A string to hash
     '''
@@ -24,7 +25,7 @@ def trunc(text, limit):
     Args:
         text (str): The string to truncate
         limit (int): The maximum limit that the string can be.
-    
+
     Returns:
         str: The truncated string
     '''
@@ -41,7 +42,7 @@ class GoogleSCCIngest:
             self.__module__, self.__class__.__name__))
         self.gcp = gcp
         self.tio = tio
-    
+
     def _cache_asset(self, asset):
         '''
         Caches the asset resource path using the asset uuid as the key.
@@ -55,15 +56,15 @@ class GoogleSCCIngest:
             '/zones/{}'.format(asset.get('gcp_zone')),
             '/instances/{}'.format(asset.get('gcp_instance_id'))
         ])
-    
+
     def _transform_vulnerability(self, vuln):
         '''
         Transforms a Tenable.io vulnerability into a Google Cloud Security
-        Command Center Finding. 
+        Command Center Finding.
 
         Args:
             vuln (dict): The Tenable.io vulnerability
-        
+
         Returns:
             str, dict: The GCP SCC Finding ID and the Finding document.
         '''
@@ -74,7 +75,7 @@ class GoogleSCCIngest:
             'FIXED': 'INACTIVE'
         }
         fid = md5sum(
-            vuln.get('asset').get('uuid'), 
+            vuln.get('asset').get('uuid'),
             str(vuln.get('plugin').get('id')),
             str(vuln.get('port').get('port')),
             vuln.get('port').get('protocol')
@@ -107,22 +108,23 @@ class GoogleSCCIngest:
                 'synopsis': plugin.get('synopsis'),
                 'port': vuln.get('port').get('port'),
                 'first_found': vuln.get('first_found'),
-                'last_found': vuln.get('last_found')  
+                'last_found': vuln.get('last_found'),
+                'vpr_score': plugin.get('vpr', {}).get('score', 'N/A')
             },
             'eventTime': arrow.utcnow().isoformat(),
             'createTime': arrow.utcnow().isoformat()
         }
-    
+
     def ingest(self, observed_since, batch_size=100, threads=2):
         '''
         Perform the ingestion
 
         Args:
-            observed_since (int): 
+            observed_since (int):
                 The unix timestamp of the age threshhold.  Only vulnerabilities
                 observed since this date will be imported.
             batch_size (int, optional):
-                The number of findings to send to SCC at a time.  If nothing is 
+                The number of findings to send to SCC at a time.  If nothing is
                 specified, it will default to 100.
             threads (int, optional):
                 The number of concurrent threads to insert the data into SCC.
@@ -133,7 +135,7 @@ class GoogleSCCIngest:
         # GCP connector and process that information to build the cache that we
         # will need for the vuln ingestion.
         self._log.info('generating asset resource records')
-        assets = self.tio.exports.assets(sources=['GCP'], 
+        assets = self.tio.exports.assets(sources=['GCP'],
             updated_at=observed_since)
         for asset in assets:
             self._cache_asset(asset)
@@ -143,7 +145,7 @@ class GoogleSCCIngest:
         # export of the vulnerabilities from Tenable.io.  If the vulnerability
         # pertains to a GCP asset, then we will transform that finding and
         # upsert the finding into GCP SCC.
-        openvulns = self.tio.exports.vulns(last_updated=observed_since, 
+        openvulns = self.tio.exports.vulns(last_updated=observed_since,
             severity=['low', 'medium', 'high', 'critical'],
             state=['open', 'reopened'])
         fixedvulns = self.tio.exports.vulns(last_fixed=observed_since,
@@ -157,12 +159,12 @@ class GoogleSCCIngest:
                 if vuln.get('asset').get('uuid') in self._assets.keys():
                     vcounter += 1
                     fid, finding = self._transform_vulnerability(vuln)
-                    pool.add_task(self._upsert_finding, fid, finding)
+                    pool.add_task(self._upsert_finding, finding)
         pool.wait_completion()
         self._log.info('transformed and ingested {} vulns'.format(vcounter))
-    
-    def _upsert_finding(self, fid, finding):
+
+    def _upsert_finding(self, finding):
         try:
-            self.gcp.findings.upsert(fid, finding)
-        except AlreadyExistsError as err:
+            self.gcp.findings.upsert(finding)
+        except RequestConflictError as err:
             self._log.debug('409 response for body={}'.format(finding))
