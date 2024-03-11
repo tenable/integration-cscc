@@ -1,3 +1,5 @@
+> NOTE: This project has been archived and is slated to be removed in the second half of 2024.
+
 # Tenable.io -> Google Cloud Security Command Center
 
 This tool is designed to consume Tenable.io vulnerability data,
